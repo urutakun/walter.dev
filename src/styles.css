@@ -1,0 +1,33 @@
+@import url(https://db.onlinewebfonts.com/c/926fcaaa8b66e0df67e176f329259711?family=PP+Editorial+New);
+@import url(https://db.onlinewebfonts.com/c/23ed6ab5114b3c4b57abae46cf8a5029?family=PP+Editorial+New+Ultralight);
+@import url(https://db.onlinewebfonts.com/c/363df8f171afbf83e5aac11fcf6f06f6?family=Founders+Grotesk);
+@import url(https://db.onlinewebfonts.com/c/e2f91c462a82101a5e78a6dc956581ed?family=Founders+Grotesk+Light);
+@import url(https://db.onlinewebfonts.com/c/254dadc58832a185e06e7370881d13e2?family=PP+Editorial+New+Ultrabold);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    .ctransition {
+        @apply ease-in-out duration-200;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: #010101;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #FEF4E3;
+}

@@ -61,7 +61,7 @@ function App() {
                 animate={{ opacity: 1, y: 0, transition: { duration: 0.9 }}}
                 className="image__wrapper w-[200px] h-[280px] overflow-hidden">
                     <motion.img
-                    src="../public/images/walter.png"
+                    src="/images/walter.png"
                     alt="walter"
                     className="w-full h-full object-cover"
                     style={{ y, scale: 0.9 }}

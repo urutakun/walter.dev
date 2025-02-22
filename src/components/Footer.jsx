@@ -23,7 +23,7 @@ function Footer () {
 
     return (
       <div
-        className="relative h-[100px] mt-16"
+        className="relative h-[100px]"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
         <div className="fixed bottom-0 h-[100px] w-full">
@@ -36,13 +36,13 @@ function Footer () {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2}}
-              className="center text-md text-center text-base lg:text-xl">
-                <div className="overflow-hidden py-1 lg:py-2">
+              className="center text-md text-center text-sm lg:text-xl">
+                <div className="overflow-hidden lg:py-2">
                     <motion.p
                     variants={itemVariants}
                     >Let&apos;s bring your ideas to life</motion.p>
                 </div>
-                <div className="overflow-hidden py-1">
+                <div className="overflow-hidden">
                     <motion.div
                     variants={itemVariants}
                     iv className="text-xs lg:text-sm">&copy; {year} By Uruta</motion.div>

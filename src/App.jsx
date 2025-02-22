@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import { projects } from "./projects";
 import { RiArrowRightUpLine } from "react-icons/ri";
+import { MdAlternateEmail } from "react-icons/md";
+import { BsLinkedin } from "react-icons/bs";
 
 function App() {
     const year = new Date().getFullYear();
@@ -198,7 +200,7 @@ function App() {
                 whileInView="show"
                 custom={0.8}
                 viewport={{ once: true }}
-                className="about col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-2 lg:justify-self-end">
+                className="about col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-2 lg:justify-self-end mt-[8rem] lg:mt-0">
                     <div className="overflow-hidden py-2">
                         <motion.p
                         variants={itemVariants}
@@ -291,7 +293,7 @@ function App() {
                     </motion.div>
                 </motion.div>
             </div>
-            <div id="projects" className="projects__section mt-[15rem] lg:mt-[20rem]">
+            <div id="projects" className="projects__section mt-[30rem] lg:mt-[20rem]">
                 <div className="header text-4xl lg:text-6xl text-center lg:text-left overflow-hidden py-2">
                     <motion.p
                     initial={{ opacity: 0, y: 40 }}
@@ -308,26 +310,30 @@ function App() {
             custom={1}
             viewport={{ once: true}}
             id="contact"
-            className="contact__section h-[50rem] flex justify-center flex-col items-center">
-                <div className="contact text-[4rem] lg:text-[8rem] overflow-hidden py-2">
-                    <motion.div
-                    variants={itemVariants}
-                    className="cta flex items-center space-x-4 font-font3">
-                        <p>Let&apos;s get in touch</p>
-                        <div className="arrow__up">
-                            <RiArrowRightUpLine className="text-[4rem] lg:text-[10rem]"/>
-                        </div>
-                    </motion.div>
-                </div>
-                <div className="email underline text-2xl lg:text-5xl mt-8 overflow-hidden py-2">
-                    <motion.p
-                    variants={itemVariants}
-                    >waltergagate1001@gmail.com</motion.p>
-                </div>
-                <div className="linkedin underline text-2xl lg:text-5xl mt-8 overflow-hidden py-2">
-                    <motion.p
-                    variants={itemVariants}
-                    >linkedin.com/in/walter-gagate-9459ab26a</motion.p>
+            className="contact__section h-[35rem] grid grid-cols-4 grid-rows-3 mt-20">
+                <motion.div
+                variants={itemVariants}
+                className="sec__1 col-start-3 md:col-start-4 col-end-4 self-end lg:self-center lg:col-start-1 lg:row-start-2">
+                    <RiArrowRightUpLine className="text-[10rem] lg:text-[20rem] rotate-180 lg:rotate-0"/>
+                </motion.div>
+                <div className="sec__2 row-start-2 col-span-4 lg:col-start-2">
+                        <motion.p
+                        variants={itemVariants}
+                        className="text-[4rem] lg:text-[9rem] leading-tight font-font2">Let&apos;s get in touch</motion.p>
+                    <div className="socials space-y-3 mt-4 text-sm lg:text-xl">
+                        <motion.div
+                        variants={itemVariants}
+                        className="email underline flex items-center space-x-2">
+                            <MdAlternateEmail />
+                            <p>waltergagate1001@gmail.com</p>
+                        </motion.div>
+                        <motion.div
+                        variants={itemVariants}
+                        className="email underline flex items-center space-x-2">
+                            <BsLinkedin />
+                            <p>linkedin.com/in/walter-gagate-9459ab26a</p>
+                        </motion.div>
+                    </div>
                 </div>
             </motion.div>
             </div>
@@ -389,7 +395,7 @@ const Image = ({ src, position }) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="project__wrapper grid grid-cols-2 lg:grid-cols-4 gap-12 mt-[8rem]">
+                className="project__wrapper grid grid-cols-2 lg:grid-cols-4 gap-12 mt-[4rem] lg:mt-[8rem]">
         {projects.map((project, index) => (
           <motion.div
           variants={itemVariants}

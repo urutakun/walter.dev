@@ -27,12 +27,12 @@ export const projects = [
         "id": 5,
         "name": "biano's pizzaderia",
         "image": "bianos.png",
-        "tags": ["website", "landing", "personal"],
+        "tags": ["website", "landing", "freelance"],
     },
     {
         "id": 6,
         "name": "minute burger",
         "image": "minute_burger.png",
-        "tags": ["website", "landing", "personal"],
+        "tags": ["website", "landing", "freelance"],
     },
 ]

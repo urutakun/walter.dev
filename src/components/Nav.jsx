@@ -104,10 +104,10 @@ const Nav = () => {
             </motion.div>
         ))}
 
-        {/* <motion.div
+        <motion.div
         variants={itemVariants}
-        className="menu uppercase md:hidden cursor-pointer hover:underline ctransition" onClick={() => setIsClicked(true)}>menu</motion.div> */}
-    </motion.nav>
+        className="menu uppercase md:hidden cursor-pointer hover:underline" onClick={() => setIsClicked(true)}>menu</motion.div>
+        </motion.nav>
   )
 }
 

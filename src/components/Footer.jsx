@@ -46,7 +46,7 @@ function Footer () {
                 <div className="overflow-hidden">
                     <motion.div
                     variants={itemVariants}
-                    iv className="text-xs lg:text-sm">&copy; {year} By Uruta</motion.div>
+                    iv className="text-xs lg:text-sm">&copy; {year} By Walter</motion.div>
                 </div>
               </motion.div>
               <div className="socials">

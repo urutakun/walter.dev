@@ -1,7 +1,7 @@
 import "./styles.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import { projects } from "./projects";
@@ -15,6 +15,7 @@ function App() {
     useEffect(() => {
       const lenis = new Lenis({
         smooth: true,
+        lerp: 0.1
       });
 
       function raf(time) {
@@ -27,7 +28,7 @@ function App() {
 
     const { scrollYProgress } = useScroll();
 
-    const y = useTransform(scrollYProgress, [0, 1], ["10%", "-20%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["10%", "-30%"]);
 
     const DURATION = 0.25;
     const DELAY = 0.025;
@@ -57,7 +58,7 @@ function App() {
             <div className="wrapper w-full text-cwhite font-font1 p-8">
             <Nav />
             <div className="hero__container relative">
-                <div className="hero w-[85vw] md:w-[65vw] lg:w-[50vw] h-[90vh] flex flex-col md:flex-row md:space-x-4 lg:space-x-16 items-center justify-center mx-auto">
+                <div className="hero w-[85vw] md:w-[65vw] lg:w-[50vw] h-[85vh] lg:h-[90vh] flex flex-col md:flex-row md:space-x-4 lg:space-x-16 items-center justify-center mx-auto">
                 <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0, transition: { duration: 0.9 }}}
@@ -78,8 +79,8 @@ function App() {
                     <div className="overflow-hidden">
                         <motion.div
                         variants={itemVariants}
-                        className="text__1 uppercase text-2xl md:text-3xl lg:text-5xl flex items-end space-x-3 pl-14">
-                            <span className="text-2xl font-font2">&#40;01&#41;</span>
+                        className="text__1 uppercase text-2xl md:text-3xl lg:text-5xl flex items-end space-x-2 lg:space-x-3 pl-14">
+                            <span className="text-sm lg:text-2xl font-font2">&#40;01&#41;</span>
                             <span className="font-bold font-font3 flex-shrink-0">
                                 web developer
                             </span>
@@ -88,8 +89,8 @@ function App() {
                     <div className="overflow-hidden">
                         <motion.div
                         variants={itemVariants}
-                        className="text__2 uppercase text-2xl md:text-3xl lg:text-5xl flex items-end space-x-3">
-                            <span className="text-2xl font-font2">&#40;02&#41;</span>
+                        className="text__2 uppercase text-2xl md:text-3xl lg:text-5xl flex items-end space-x-2 lg:space-x-3">
+                            <span className="text-sm lg:text-2xl font-font2">&#40;02&#41;</span>
                             <span className="font-bold font-font3 flex-shrink-0">
                                 web designer
                             </span>
@@ -102,7 +103,7 @@ function App() {
                 initial="hidden"
                 animate="show"
                 custom={1}
-                className="absolute bottom-0 w-full flex justify-between items-end">
+                className="absolute bottom-0 w-full justify-between items-end hidden lg:flex">
                     <motion.div
                     variants={itemVariants}
                     className="brief__desc w-[350px] hidden md:block">
@@ -113,55 +114,53 @@ function App() {
                     </motion.div>
                     <motion.div
                     variants={itemVariants}
-                    className="chase md:hidden">
-                        <p>Chase</p>
-                    </motion.div>
-                    <motion.div
-                    variants={itemVariants}
-                    className="excellence md:hidden">
-                        <p>Excellence</p>
-                    </motion.div>
-                    <motion.div
-                    variants={itemVariants}
-                    className="brief__desc">
+                    className="brief__desc hidden md:block">
                         <p>&copy; {year} Philippines</p>
                     </motion.div>
                 </motion.div>
             </div>
-            {/* <motion.div
+
+            <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
             viewport={{ once : true}}
             custom={1}
-            className="quote__section relative text-[5rem] md:text-[5rem] lg:text-[10rem] text-center space-y-6 h-[54rem] lg:h-screen flex flex-col justify-center items-center uppercase mt-[5rem] cursor-pointer border">
-                <Image
-                src="astronaut.jpg"
-                position={{
-                    top: "clamp(50px, 10vw, 100px)",
-                    left: "clamp(10px, 5vw, 100px)",
-                }}
-                />
-                <Image
-                src="runner.jpg"
-                position={{
-                    top: "clamp(20px, 15vw, 400px)",
-                    right: "clamp(2%, 5vw, 10%)",
-                }}
-                />
-                <div
-                className="overflow-hidden py-2">
-                    <motion.p
-                    variants={itemVariants}
-                    >Excellence is</motion.p>
+            className="quote__section h-[40vh] lg:h-screen mt-[3rem]">
+                <div className="relative h-full">
+                    <div
+                    className="quote absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2  flex flex-col items-center text-4xl md:text-7xl lg:text-9xl font-font2  w-full">
+                        <span
+                        className="leading-relaxed">EXCELLENCE IS</span>
+                        <span
+                        className="leading-relaxed">A MINDSET</span>
+                    </div>
+                    <div className="mx-auto w-full">
+                        <ParallaxImage
+                            src="/images/astronaut.webp"
+                            alt="Excellence in space"
+                            title="Excellence in space"
+                            start={300}
+                            end={-100}
+                            className="w-[70px] md:w-[120px] h-100px lg:w-[200px] ml-1 lg:ml-10"/>
+                        <ParallaxImage
+                            src="/images/runner.webp"
+                            alt="Excellence in running"
+                            title="Excellence in running"
+                            start={500}
+                            end={-200}
+                            className="w-[80px] lg:w-[200px] md:w-[120px] ml-[210px] md:ml-[580px] lg:ml-[350px]"/>
+                        <ParallaxImage
+                            src="/images/chess.webp"
+                            alt="Excellence in chess"
+                            title="Excellence in chess"
+                            start={150}
+                            end={-150}
+                            className="w-[80px] md:w-[100px] lg:w-[180px] ml-[80px] lg:ml-[1600px]"/>
+                    </div>
                 </div>
-                <div
-                className="overflow-hidden py-2">
-                    <motion.p
-                    variants={itemVariants}
-                    >a mindset</motion.p>
-                </div>
-            </motion.div> */}
+            </motion.div>
+
             <div id="about" className="about__section grid grid-cols-2 grid-rows-2 h-[50rem] lg:w-[70vw] text-center lg:text-left lg:mx-auto mt-[10rem]">
                 <motion.div
                 variants={containerVariants}
@@ -307,7 +306,7 @@ function App() {
             variants={containerVariants}
             initial="hidden"
             whileInView="show"
-            custom={1}
+            custom={0.6}
             viewport={{ once: true}}
             id="contact"
             className="contact__section h-[35rem] grid grid-cols-4 grid-rows-3 mt-20">
@@ -331,7 +330,7 @@ function App() {
                         variants={itemVariants}
                         className="email underline flex items-center space-x-2">
                             <BsLinkedin />
-                            <p>linkedin.com/in/walter-gagate-9459ab26a</p>
+                            <a href="https://www.linkedin.com/in/walter-gagate-9459ab26a/">linkedin.com/in/walter-gagate-9459ab26a</a>
                         </motion.div>
                     </div>
                 </div>
@@ -345,31 +344,37 @@ function App() {
 
 export default App;
 
-const Image = ({ src, position }) => {
-    const imageRef = useRef(null);
+const ParallaxImage = ({ src, className, alt, start, end, title }) => {
+    const ref = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    const opacity = useTransform(scrollYProgress, [0.8, 1], [1, 0]);
+    const scale = useTransform(scrollYProgress, [0.85, 1], [1, 0.85]);
+    const y = useTransform(scrollYProgress, [0, 1], [start, end])
 
 
-    const { scrollYProgress } = useScroll();
+    const transform = useMotionTemplate`translateY(${y}px) scale(${scale})`;
 
-    const y = useTransform(scrollYProgress, [0, 1], ["10%", "-20%"]);
+    useMotionValue(scrollYProgress, "change", latest => console.log(latest));
 
-    return (
-      <motion.div
-        className="w-[120px] lg:w-[250px] h-[200px] lg:h-[400px] absolute overflow-hidden"
-        style={{ ...position }}
-      >
+   return (
         <motion.img
-          style={{
-            y,
-            scale: 1.2,
-          }}
-          src={`/images/${src}`}
-          alt={src}
-          className="w-full h-full object-cover"
-        />
-      </motion.div>
-    );
-  };
+        ref={ref}
+        style={{
+            opacity,
+            transform
+        }}
+        src={src}
+        alt={alt}
+        title={title}
+        className={className} />
+
+   )
+};
 
   const Projects = () => {
     const containerVariants = {

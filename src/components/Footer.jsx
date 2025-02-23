@@ -33,6 +33,7 @@ function Footer () {
               </div>
               <motion.div
               variants={containerVariants}
+              custom={0.2}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.2}}

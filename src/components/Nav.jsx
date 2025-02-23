@@ -49,7 +49,7 @@ const Nav = () => {
     variants={navVariants}
     initial="hidden"
     animate="show"
-    className='font-font1 flex justify-between items-center'>
+    className='font-font1 flex justify-between items-center w-full'>
         <MobileNav isClicked={isClicked} setIsClicked={setIsClicked}/>
         <motion.div
         variants={itemVariants}
